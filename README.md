@@ -1,2 +1,1 @@
-Nama : Zidan Ammar Zurizky
-NIM  : 20230801398
+Zidan Ammar Zurizky (20230801398)
