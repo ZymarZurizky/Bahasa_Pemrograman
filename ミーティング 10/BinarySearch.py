@@ -2,6 +2,7 @@ def binary_search(arr, x):
     low = 0
     high = len(arr) - 1
     mid = 0
+    indices = []
 
     while low <= high:
         mid = (high + low) // 2
@@ -16,7 +17,17 @@ def binary_search(arr, x):
 
         # Elemen ditemukan
         else:
-            return mid
+            indices.append(mid)
+            # Cari elemen duplikat di sebelah kiri dan kanan
+            left = mid - 1
+            right = mid + 1
+            while left >= 0 and arr[left] == x:
+                indices.append(left)
+                left -= 1
+            while right < len(arr) and arr[right] == x:
+                indices.append(right)
+                right += 1
+            return indices
 
     # Elemen tidak ditemukan
     return -1
@@ -31,14 +42,14 @@ def main():
 
         result = binary_search(arr, x)
 
-        if result != -1:
-            print(f"Elemen ditemukan pada indeks {result}")
+        if result!= -1:
+            print(f"Elemen ditemukan pada indeks {', '.join(map(str, result))}")
         else:
             print("Elemen tidak ditemukan dalam daftar")
 
         # Menanyakan apakah pengguna ingin mengulangi
         ulangi = input("Apakah Anda ingin mencari elemen lain? (y/n): ").strip().lower()
-        if ulangi != 'y':
+        if ulangi!= 'y':
             break
 
 # Menjalankan fungsi utama
